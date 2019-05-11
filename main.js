@@ -41,4 +41,3 @@ function render() {
 
 render()
 store.subscribe(render)
-saga
