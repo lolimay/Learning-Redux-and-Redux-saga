@@ -45,9 +45,25 @@ function render() {
 		<div>
 			<Counter
 				value={counter.number}
+				isLogging={counter.isLogging}
+				hasMessage={counter.hasMessage}
 				onIncrement={() => action(actions.counter.up())}
 				onDecrement={() => action(actions.counter.down())}
 				onIncrementIfOdd={() => action(actions.counter.upIfOdd(100))}
+				onSwitchLogging={() => {
+					if (counter.isLogging) {
+						action(actions.counter.unSetLogging());
+					} else {
+						action(actions.counter.setLogging());
+					}
+				}}
+				onSwitchMessage={() => {
+					if (counter.hasMessage) {
+						action(actions.counter.turnOffMessage());
+					} else {
+						action(actions.counter.turnOnMessage());
+					}
+				}}
 			/>
 			<Random
 				value={random.number}

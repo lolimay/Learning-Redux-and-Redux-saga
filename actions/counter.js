@@ -2,25 +2,25 @@ import * as types from './actionsTypes';
 
 // Action function wrapper
 // We can pass parameters to the action here
-export function counterSetLogging() {
+export function setLogging() {
 	return {
 		type: types.COUNTER.SET_LOGGING
 	};
 }
 
-export function counterUnsetLogging() {
+export function unSetLogging() {
 	return {
 		type: types.COUNTER.UNSET_LOGGING
 	};
 }
 
-export function counterTurnOnMessage() {
+export function turnOnMessage() {
 	return {
 		type: types.COUNTER.TURN_ON_MESSAGE
 	};
 }
 
-export function counterTurnOffMessage() {
+export function turnOffMessage() {
 	return {
 		type: types.COUNTER.TURN_OFF_MESSAGE
 	};
