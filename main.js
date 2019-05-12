@@ -21,7 +21,7 @@ import helloSaga from './sagas';
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-const store = createStore(
+const reduxStore = createStore(
 	reducers,
 	applyMiddleware(createSagaMiddleware(helloSaga))
 );
@@ -29,17 +29,17 @@ const store = createStore(
 // You can use subscribe() to update the UI in response to state changes.
 // Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.
 // However it can also be handy to persist the current state in the localStorage.
-store.subscribe(listener => {
-	console.log(store.getState().counter);
+reduxStore.subscribe(() => {
+	console.log(JSON.stringify(reduxStore.getState(), null, 4));
 });
 
 
 // The only way to mutate the internal state is to dispatch an action.
 // The actions can be serialized, logged or stored and later replayed.
-const action = act => store.dispatch(act);
+const action = act => reduxStore.dispatch(act);
 
 function render() {
-	const { counter, random } = store.getState();
+	const { counter, random } = reduxStore.getState();
 
 	ReactDOM.render(
 		<div>
@@ -59,4 +59,4 @@ function render() {
 }
 
 render();
-store.subscribe(render);
+reduxStore.subscribe(render);
