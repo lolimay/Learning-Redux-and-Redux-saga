@@ -1,30 +1,25 @@
-/*eslint-disable no-unused-vars */
-import React, { Component, PropTypes } from 'react'
+import React from 'react';
 
-const Counter = ({ value, onIncrement, onDecrement, onIncrementIfOdd }) =>
-      <div>
-        <button onClick={onIncrement}>
-          Increment
-        </button>
-        {' '}
-        <button onClick={onDecrement}>
-          Decrement
-        </button>
-        {' '}
-        <button onClick={onIncrementIfOdd}>
-          IncrementIfOdd
-        </button>
-        <hr />
-        <div>
-          Clicked: {value} times
-        </div>
-      </div>
+const Counter = ({
+	value, onIncrement, onDecrement, onIncrementIfOdd
+}) => (
+	<div>
+		<button onClick={onIncrement}>
+			Increment
+		</button>
+		{' '}
+		<button onClick={onDecrement}>
+			Decrement
+		</button>
+		{' '}
+		<button onClick={onIncrementIfOdd}>
+						IncrementIfOdd
+		</button>
+		<hr />
+		<div>
+			Clicked: {value} times
+		</div>
+	</div>
+);
 
-Counter.propTypes = {
-  value: PropTypes.number.isRequired,
-  onIncrement: PropTypes.func.isRequired,
-  onDecrement: PropTypes.func.isRequired,
-  onIncrementIfOdd: PropTypes.func.isRequired
-}
-
-export default Counter
+export default Counter;
