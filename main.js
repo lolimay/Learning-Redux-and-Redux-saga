@@ -5,8 +5,10 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import Counter from './Counter';
-import reducer from './reducers';
+import actions from './actions';
+import Counter from './components/Counter';
+import Random from './components/Random';
+import reducers from './reducers';
 import helloSaga from './sagas';
 
 // Redux Principles
@@ -20,30 +22,38 @@ import helloSaga from './sagas';
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 const store = createStore(
-	reducer,
+	reducers,
 	applyMiddleware(createSagaMiddleware(helloSaga))
 );
 
 // You can use subscribe() to update the UI in response to state changes.
 // Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.
 // However it can also be handy to persist the current state in the localStorage.
-store.subscribe(() => {
-	console.log(store.getState());
+store.subscribe(listener => {
+	console.log(store.getState().counter);
 });
 
 
 // The only way to mutate the internal state is to dispatch an action.
 // The actions can be serialized, logged or stored and later replayed.
-const action = type => store.dispatch({ type });
+const action = act => store.dispatch(act);
 
 function render() {
+	const { counter, random } = store.getState();
+
 	ReactDOM.render(
-		<Counter
-			value={store.getState()}
-			onIncrement={() => action('INCREMENT')}
-			onDecrement={() => action('DECREMENT')}
-			onIncrementIfOdd={() => action('INCREMENT_IF_ODD')}
-		/>,
+		<div>
+			<Counter
+				value={counter.number}
+				onIncrement={() => action(actions.counter.up())}
+				onDecrement={() => action(actions.counter.down())}
+				onIncrementIfOdd={() => action(actions.counter.upIfOdd(100))}
+			/>
+			<Random
+				value={random.number}
+				onGenerateRandom={() => action(actions.random.generate())}
+			/>
+		</div>,
 		document.getElementById('root')
 	);
 }
