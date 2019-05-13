@@ -2,6 +2,8 @@ import * as types from './actionsTypes';
 
 // Action function wrapper
 // We can pass parameters to the action here
+// Actions are plain JavaScript objects.
+// Actions must have a type property that indicates the type of action being performed.
 export function setLogging() {
 	return {
 		type: types.COUNTER.SET_LOGGING
@@ -41,6 +43,8 @@ export function down() {
 export function upIfOdd(step = 1) {
 	return {
 		type: types.COUNTER.UP_IF_ODD,
-		step
+		payload: {
+			step
+		}
 	};
 }

@@ -36,6 +36,7 @@ reduxStore.subscribe(() => {
 
 // The only way to mutate the internal state is to dispatch an action.
 // The actions can be serialized, logged or stored and later replayed.
+// We can send the action to the store using store.dispatch();
 const action = act => reduxStore.dispatch(act);
 
 function render() {
