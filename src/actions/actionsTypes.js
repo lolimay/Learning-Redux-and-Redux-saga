@@ -5,6 +5,11 @@ const defaultTypes = [
 	TOGGLE_MESSAGE
 ];
 
+const REQUEST = 'REQUEST';
+const SUCCESS = 'SUCCESS';
+const FAILURE = 'FAILURE';
+const requestTypes = [REQUEST, SUCCESS, FAILURE];
+
 function createRequestTypes(base, types = defaultTypes) {
 	const res = {};
 	types.forEach(type => (res[type] = `${ base }_${ type }`));
@@ -21,4 +26,9 @@ export const COUNTER = createRequestTypes('COUNTER', [
 export const RANDOM = createRequestTypes('RANDOM', [
 	...defaultTypes,
 	'GENERATE'
+]);
+
+export const GITHUB_TRENDING = createRequestTypes('GITHUB_TRENDING', [
+	...requestTypes,
+	'REFRESH'
 ]);

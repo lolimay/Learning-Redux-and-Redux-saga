@@ -31,6 +31,7 @@ class Counter extends React.Component {
 
 		return (
 			<div>
+				<h1>A Simple Counter</h1>
 				<button type='button' onClick={up}>
 					Increment
 				</button>
@@ -50,16 +51,12 @@ class Counter extends React.Component {
 				<button type='button' onClick={toggleMessage}>
 					{hasMessage ? 'Hide Message' : 'Show Message'}
 				</button>
-				<hr />
 				<div>
 					Clicked: {number} times
 				</div>
+				<hr />
 			</div>
 		);
-	}
-
-	componentDidMount() {
-		console.log(this.props);
 	}
 }
 

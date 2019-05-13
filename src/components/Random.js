@@ -16,13 +16,14 @@ class Random extends React.Component {
 
 		return (
 			<div>
+				<h1>Random Number Generator</h1>
 				<button type='button' onClick={generate}>
 				Generate
 				</button>
-				<hr />
 				<div>
 				Result: {number}
 				</div>
+				<hr />
 			</div>
 		);
 	}
