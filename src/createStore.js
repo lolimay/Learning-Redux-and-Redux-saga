@@ -12,8 +12,11 @@ import reducers from './reducers';
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 
+/* eslint-disable no-underscore-dangle */
 const reduxStore = createStore(
-	reducers
+reducers, /* preloadedState, */
+window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+/* eslint-enable */
 
 export default reduxStore;

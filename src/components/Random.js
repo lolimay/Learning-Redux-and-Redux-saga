@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as randomActions from '../actions/random';
 
 @connect(state => ({
-	number: state.number
+	number: state.random.number
 }), dispatch => ({
 	generate: () => dispatch(randomActions.generate())
 }))
@@ -16,7 +16,7 @@ class Random extends React.Component {
 
 		return (
 			<div>
-				<button type='button' onClick={generate()}>
+				<button type='button' onClick={generate}>
 				Generate
 				</button>
 				<hr />
@@ -29,8 +29,8 @@ class Random extends React.Component {
 }
 
 Random.propTypes = {
-	number: PropTypes.number.isRequired,
-	generate: PropTypes.func.isRequired
+	number: PropTypes.number,
+	generate: PropTypes.func
 };
 
 export default Random;

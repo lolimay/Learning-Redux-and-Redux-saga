@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import * as counterActions from '../actions/counter';
 
 @connect(state => ({
-	number: state.number,
-	isLogging: state.isLogging,
-	hasMessage: state.hasMessage
+	number: state.counter.number,
+	isLogging: state.counter.isLogging,
+	hasMessage: state.counter.hasMessage
 }), dispatch => ({
 	up: () => dispatch(counterActions.up()),
 	down: () => dispatch(counterActions.down()),
@@ -31,23 +31,23 @@ class Counter extends React.Component {
 
 		return (
 			<div>
-				<button type='button' onClick={up()}>
+				<button type='button' onClick={up}>
 					Increment
 				</button>
 				{' '}
-				<button type='button' onClick={down()}>
+				<button type='button' onClick={down}>
 					Decrement
 				</button>
 				{' '}
-				<button type='button' onClick={upIfOdd()}>
+				<button type='button' onClick={upIfOdd}>
 					IncrementIfOdd
 				</button>
 				{' '}
-				<button type='button' onClick={toggleLogging()}>
+				<button type='button' onClick={toggleLogging}>
 					{isLogging ? 'Cancel Logging' : 'Start Logging'}
 				</button>
 				{' '}
-				<button type='button' onClick={toggleMessage()}>
+				<button type='button' onClick={toggleMessage}>
 					{hasMessage ? 'Hide Message' : 'Show Message'}
 				</button>
 				<hr />
@@ -57,17 +57,21 @@ class Counter extends React.Component {
 			</div>
 		);
 	}
+
+	componentDidMount() {
+		console.log(this.props);
+	}
 }
 
 Counter.propTypes = {
-	number: PropTypes.number.isRequired,
-	isLogging: PropTypes.bool.isRequired,
-	hasMessage: PropTypes.bool.isRequired,
-	up: PropTypes.func.isRequired,
-	down: PropTypes.func.isRequired,
-	upIfOdd: PropTypes.func.isRequired,
-	toggleLogging: PropTypes.func.isRequired,
-	toggleMessage: PropTypes.func.isRequired
+	number: PropTypes.number,
+	isLogging: PropTypes.bool,
+	hasMessage: PropTypes.bool,
+	up: PropTypes.func,
+	down: PropTypes.func,
+	upIfOdd: PropTypes.func,
+	toggleLogging: PropTypes.func,
+	toggleMessage: PropTypes.func
 };
 
 export default Counter;
