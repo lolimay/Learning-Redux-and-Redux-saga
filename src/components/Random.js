@@ -1,25 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 
-import * as randomActionCreators from '../actions/random';
+import { connect } from 'react-redux';
+import * as randomActions from '../actions/random';
+
+@connect(state => ({
+	number: state.number
+}), dispatch => ({
+	generate: () => dispatch(randomActions.generate())
+}))
 
 class Random extends React.Component {
-	constructor(props) {
-		super(props);
-
-		const { dispatch } = props;
-
-		this.boundActionCreators = bindActionCreators(randomActionCreators, dispatch);
-	}
-
 	render() {
-		const { number } = this.props;
-		const actions = this.boundActionCreators;
+		const { number, generate } = this.props;
 
 		return (
 			<div>
-				<button type='button' onClick={() => { actions.generate(); }}>
+				<button type='button' onClick={generate()}>
 				Generate
 				</button>
 				<hr />
@@ -32,8 +29,8 @@ class Random extends React.Component {
 }
 
 Random.propTypes = {
-	dispatch: PropTypes.func.isRequired,
-	number: PropTypes.number.isRequired
+	number: PropTypes.number.isRequired,
+	generate: PropTypes.func.isRequired
 };
 
 export default Random;

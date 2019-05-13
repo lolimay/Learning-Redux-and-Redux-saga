@@ -1,50 +1,53 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
-import * as counterActionCreators from '../actions/counter';
+import { connect } from 'react-redux';
+import * as counterActions from '../actions/counter';
 
-//! onClick={() => { actions.upIfOdd(); }}>
-// If the action has other params, we need to apply arrow function!
+@connect(state => ({
+	number: state.number,
+	isLogging: state.isLogging,
+	hasMessage: state.hasMessage
+}), dispatch => ({
+	up: () => dispatch(counterActions.up()),
+	down: () => dispatch(counterActions.down()),
+	upIfOdd: () => dispatch(counterActions.upIfOdd()),
+	toggleLogging: () => dispatch(counterActions.toggleLogging()),
+	toggleMessage: () => dispatch(counterActions.toggleMessage())
+}))
 
 class Counter extends React.Component {
-	constructor(props) {
-		super(props);
-
-		const { dispatch } = props;
-
-		// The only way to mutate the internal state is to dispatch an action.
-		// The actions can be serialized, logged or stored and later replayed.
-		// We can send the action to the store using store.dispatch();
-		// TODO Desciption:
-		// Turns an object whose values are action creators, into an object with the same keys,
-		// but with every action creator wrapped into a dispatch call so they may be invoked directly.
-		this.boundActionCreators = bindActionCreators(counterActionCreators, dispatch);
-	}
-
 	render() {
-		const { number, isLogging, hasMessage } = this.props;
-		const actions = this.boundActionCreators;
+		const {
+			number,
+			isLogging,
+			hasMessage,
+			up,
+			down,
+			upIfOdd,
+			toggleLogging,
+			toggleMessage
+		} = this.props;
 
 		return (
 			<div>
-				<button type='button' onClick={() => { actions.up(); }}>
+				<button type='button' onClick={up()}>
 					Increment
 				</button>
 				{' '}
-				<button type='button' onClick={() => { actions.down(); }}>
+				<button type='button' onClick={down()}>
 					Decrement
 				</button>
 				{' '}
-				<button type='button' onClick={() => { actions.upIfOdd(); }}>
+				<button type='button' onClick={upIfOdd()}>
 					IncrementIfOdd
 				</button>
 				{' '}
-				<button type='button' onClick={() => { actions.toggleLogging(); }}>
+				<button type='button' onClick={toggleLogging()}>
 					{isLogging ? 'Cancel Logging' : 'Start Logging'}
 				</button>
 				{' '}
-				<button type='button' onClick={() => { actions.toggleMessage(); }}>
+				<button type='button' onClick={toggleMessage()}>
 					{hasMessage ? 'Hide Message' : 'Show Message'}
 				</button>
 				<hr />
@@ -57,10 +60,14 @@ class Counter extends React.Component {
 }
 
 Counter.propTypes = {
-	dispatch: PropTypes.func.isRequired,
 	number: PropTypes.number.isRequired,
 	isLogging: PropTypes.bool.isRequired,
-	hasMessage: PropTypes.bool.isRequired
+	hasMessage: PropTypes.bool.isRequired,
+	up: PropTypes.func.isRequired,
+	down: PropTypes.func.isRequired,
+	upIfOdd: PropTypes.func.isRequired,
+	toggleLogging: PropTypes.func.isRequired,
+	toggleMessage: PropTypes.func.isRequired
 };
 
 export default Counter;
