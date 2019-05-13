@@ -4,6 +4,7 @@ import * as types from './actionsTypes';
 // We can pass parameters to the action here
 // Actions are plain JavaScript objects.
 // Actions must have a type property that indicates the type of action being performed.
+
 export function toggleLogging() {
 	return {
 		type: types.COUNTER.TOGGLE_LOGGING

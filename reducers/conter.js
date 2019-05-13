@@ -1,5 +1,6 @@
 import * as types from '../actions/actionsTypes';
 // reducer is a special function that decide how every action transforms the entire application's state.
+// counterActionCreators :)
 
 const initialSate = {
 	number: 0,
@@ -32,7 +33,7 @@ export default function counter(state = initialSate, action) {
 		case types.COUNTER.UP_IF_ODD:
 			return {
 				...state,
-				number: (state.number % 2 !== 0) ? state.number + action.payload.step : state.number
+				number: (state.number % 2 !== 0) ? (state.number + action.payload.step) : state.number
 			};
 		default:
 			return state;
