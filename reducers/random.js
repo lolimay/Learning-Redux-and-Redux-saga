@@ -8,25 +8,15 @@ const initialState = {
 
 export default function random(state = initialState, action) {
 	switch (action.type) {
-		case types.RANDOM.SET_LOGGING:
+		case types.RANDOM.TOGGLE_LOGGING:
 			return {
 				...state,
-				isLogging: true
+				isLogging: !state.isLogging
 			};
-		case types.RANDOM.UNSET_LOGGING:
+		case types.RANDOM.TOGGLE_MESSAGE:
 			return {
 				...state,
-				isLogging: false
-			};
-		case types.RANDOM.TURN_ON_MESSAGE:
-			return {
-				...state,
-				hasMessage: true
-			};
-		case types.RANDOM.TURN_OFF_MESSAGE:
-			return {
-				...state,
-				hasMessage: false
+				hasMessage: !state.hasMessage
 			};
 		case types.RANDOM.GENERATE:
 			return {

@@ -51,20 +51,8 @@ function render() {
 				onIncrement={() => action(actions.counter.up())}
 				onDecrement={() => action(actions.counter.down())}
 				onIncrementIfOdd={() => action(actions.counter.upIfOdd(100))}
-				onSwitchLogging={() => {
-					if (counter.isLogging) {
-						action(actions.counter.unSetLogging());
-					} else {
-						action(actions.counter.setLogging());
-					}
-				}}
-				onSwitchMessage={() => {
-					if (counter.hasMessage) {
-						action(actions.counter.turnOffMessage());
-					} else {
-						action(actions.counter.turnOnMessage());
-					}
-				}}
+				onSwitchLogging={() => action(actions.counter.toggleLogging())}
+				onSwitchMessage={() => action(actions.counter.toggleMessage())}
 			/>
 			<Random
 				value={random.number}

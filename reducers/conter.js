@@ -9,25 +9,15 @@ const initialSate = {
 
 export default function counter(state = initialSate, action) {
 	switch (action.type) {
-		case types.COUNTER.SET_LOGGING:
+		case types.COUNTER.TOGGLE_LOGGING:
 			return {
 				...state,
-				isLogging: true
+				isLogging: !state.isLogging
 			};
-		case types.COUNTER.UNSET_LOGGING:
+		case types.COUNTER.TOGGLE_MESSAGE:
 			return {
 				...state,
-				isLogging: false
-			};
-		case types.COUNTER.TURN_ON_MESSAGE:
-			return {
-				...state,
-				hasMessage: true
-			};
-		case types.COUNTER.TURN_OFF_MESSAGE:
-			return {
-				...state,
-				hasMessage: false
+				hasMessage: !state.hasMessage
 			};
 		case types.COUNTER.UP:
 			return {
