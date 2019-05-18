@@ -5,10 +5,10 @@ const initialState = {
 	failure: false,
 	result: {},
 	errorMessage: {}
-}
+};
 
 export default function message(state = initialState, action) {
-	switch(action.type) {
+	switch (action.type) {
 		case types.GITHUB_TRENDING.REQUEST:
 			return {
 				...state,
@@ -28,5 +28,7 @@ export default function message(state = initialState, action) {
 				failure: true,
 				errorMessage: action.err
 			};
+		default:
+			return state;
 	}
 }
