@@ -7,7 +7,9 @@ export default function App() {
 	return (
 		<div className='counter-app'>
 			<Counter />
+			<hr />
 			<Random />
+			<hr />
 			<GitHubTrending />
 		</div>
 	);

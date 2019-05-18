@@ -48,6 +48,7 @@ export default class GitHubTrending extends React.Component {
 
 		return (
 			<div className='github-trending'>
+				<h1>GitHub TrendingLists</h1>
 				<button type='button' onClick={refresh}>
 					Refresh
 				</button>

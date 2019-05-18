@@ -54,7 +54,6 @@ class Counter extends React.Component {
 				<div>
 					Clicked: {number} times
 				</div>
-				<hr />
 			</div>
 		);
 	}

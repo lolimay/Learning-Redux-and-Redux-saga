@@ -23,7 +23,6 @@ class Random extends React.Component {
 				<div>
 				Result: {number}
 				</div>
-				<hr />
 			</div>
 		);
 	}
