@@ -7,14 +7,14 @@ import * as githubTrendingActions from '../actions/githubTrending';
 import GitHubCell from './GitHubCell';
 
 @connect(state => ({
-	result: state.githubTrending.result
+	trendingLists: state.githubTrending.result
 }), dispatch => ({
 	refresh: () => dispatch(githubTrendingActions.refresh())
 }))
 
 export default class GitHubTrending extends React.Component {
 	static propTypes = {
-		trendingLists: PropTypes.object,
+		trendingLists: PropTypes.array,
 		refresh: PropTypes.func
 	}
 

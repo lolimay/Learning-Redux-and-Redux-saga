@@ -3,7 +3,7 @@ import * as types from '../actions/actionsTypes';
 const initialState = {
 	isFetching: false,
 	failure: false,
-	result: {},
+	result: [],
 	errorMessage: {}
 };
 
