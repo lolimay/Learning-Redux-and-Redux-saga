@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 import React from 'react';
 import Counter from './components/Counter';
 import Random from './components/Random';

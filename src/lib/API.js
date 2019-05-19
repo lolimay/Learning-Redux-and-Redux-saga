@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASEURL = 'http://anly.leanapp.cn/api/github/trending/java?since=weekly';
+const BASEURL = '/api/fetchTrendingList';
 
 export async function fetchTrendingList() {
 	try {
