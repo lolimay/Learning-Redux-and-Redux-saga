@@ -1,5 +1,8 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+
 import reducers from './reducers';
+import sagas from './sagas/sagas';
 
 // Redux Principles
 // 1. The whole state of your app is stored in an object tree inside **a single store.** - a single store
@@ -12,11 +15,16 @@ import reducers from './reducers';
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 
+const sagaMiddleware = createSagaMiddleware();
+
 /* eslint-disable no-underscore-dangle */
 const reduxStore = createStore(
-reducers, /* preloadedState, */
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	reducers,
+	applyMiddleware(sagaMiddleware), /* preloadedState, */
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 /* eslint-enable */
+
+sagaMiddleware.run(sagas);
 
 export default reduxStore;

@@ -11,6 +11,11 @@ import * as randomActions from '../actions/random';
 }))
 
 class Random extends React.Component {
+	static propTypes = {
+		number: PropTypes.number,
+		generate: PropTypes.func
+	}
+
 	render() {
 		const { number, generate } = this.props;
 
@@ -27,10 +32,5 @@ class Random extends React.Component {
 		);
 	}
 }
-
-Random.propTypes = {
-	number: PropTypes.number,
-	generate: PropTypes.func
-};
 
 export default Random;
