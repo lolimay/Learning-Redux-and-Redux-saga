@@ -17,12 +17,12 @@ export default class GitHubCell extends React.PureComponent {
 		} = this.props;
 
 		return (
-			<td className={`${ owner }-${ repo }`}>
+			<div className={`${ owner }-${ repo }`}>
 				<img src={avatar} alt='avatar' />
 				{' '}
-				<a href={link}>{`${ owner }/${ repo } - ${ stars } stars`}</a>
+				<a href={link} target='_blank'>{`${ owner }/${ repo } - ${ stars } stars`}</a>
 				<p>{desc}</p>
-			</td>
+			</div>
 		);
 	}
 }

@@ -19,15 +19,15 @@ export default class GitHubTrending extends React.Component {
 	}
 
 	createTable = (trendingLists) => {
-		const table = [];
+		const list = [];
 
 		trendingLists.forEach((trendingItem) => {
 			const {
 				avatar, desc, link, owner, repo, stars
 			} = trendingItem;
 
-			table.push(
-				<tr>
+			list.push(
+				<li key={`${ owner }/${ repo }`}>
 					<GitHubCell
 						avatar={avatar}
 						desc={desc}
@@ -36,11 +36,11 @@ export default class GitHubTrending extends React.Component {
 						repo={repo}
 						stars={stars}
 					/>
-				</tr>
+				</li>
 			);
 		});
 
-		return table;
+		return <ul>{list}</ul>;
 	}
 
 	render() {
