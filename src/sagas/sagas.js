@@ -8,7 +8,7 @@ const handleFetchTrending = function* fetchTrendingList() {
 		const trendingList = yield call(API.fetchTrendingList);
 		yield put(githubTrendingSuccess(trendingList));
 	} catch (err) {
-		yield put(githubTrendingFailure(err));
+		yield put(githubTrendingFailure({}));
 	}
 }
 

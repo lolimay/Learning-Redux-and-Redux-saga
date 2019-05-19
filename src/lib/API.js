@@ -6,6 +6,6 @@ export async function fetchTrendingList() {
 	try {
 		return await axios.get(BASEURL);
 	} catch (err) {
-		throw err;
+		return err;
 	}
 }

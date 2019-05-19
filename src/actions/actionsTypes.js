@@ -29,6 +29,5 @@ export const RANDOM = createRequestTypes('RANDOM', [
 ]);
 
 export const GITHUB_TRENDING = createRequestTypes('GITHUB_TRENDING', [
-	...requestTypes,
-	'REFRESH'
+	...requestTypes
 ]);

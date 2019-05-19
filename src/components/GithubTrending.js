@@ -10,7 +10,7 @@ import GitHubCell from './GitHubCell';
 	globalState: state,
 	trendingList: state.githubTrending.trendingList
 }), dispatch => ({
-	refresh: () => dispatch(githubTrendingActions.refresh())
+	refresh: () => dispatch(githubTrendingActions.githubTrendingRequest())
 }))
 
 export default class GitHubTrending extends React.Component {

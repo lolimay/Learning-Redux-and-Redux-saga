@@ -21,9 +21,3 @@ export function githubTrendingFailure(err) {
 		err
 	};
 }
-
-export function refresh() {
-	return {
-		type: types.GITHUB_TRENDING.REFRESH
-	};
-}
