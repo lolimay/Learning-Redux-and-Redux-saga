@@ -7,21 +7,22 @@ import * as githubTrendingActions from '../actions/githubTrending';
 import GitHubCell from './GitHubCell';
 
 @connect(state => ({
-	trendingLists: state.githubTrending.result
+	globalState: state,
+	trendingList: state.githubTrending.trendingList
 }), dispatch => ({
 	refresh: () => dispatch(githubTrendingActions.refresh())
 }))
 
 export default class GitHubTrending extends React.Component {
 	static propTypes = {
-		trendingLists: PropTypes.array,
+		trendingList: PropTypes.array,
 		refresh: PropTypes.func
 	}
 
-	createTable = (trendingLists) => {
+	createTable = (trendingList) => {
 		const list = [];
 
-		trendingLists.forEach((trendingItem) => {
+		trendingList.forEach((trendingItem) => {
 			const {
 				avatar, desc, link, owner, repo, stars
 			} = trendingItem;
@@ -44,7 +45,7 @@ export default class GitHubTrending extends React.Component {
 	}
 
 	render() {
-		const { trendingLists, refresh } = this.props;
+		const { trendingList, refresh } = this.props;
 
 		return (
 			<div className='github-trending'>
@@ -52,7 +53,7 @@ export default class GitHubTrending extends React.Component {
 				<button type='button' onClick={refresh}>
 					Refresh
 				</button>
-				{this.createTable(trendingLists)}
+				{this.createTable(trendingList)}
 			</div>
 		);
 	}
