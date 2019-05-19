@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const styles = {
+	height: 30
+};
+
 export default class GitHubCell extends React.PureComponent {
 	static propTypes = {
 		avatar: PropTypes.string,
@@ -18,7 +22,7 @@ export default class GitHubCell extends React.PureComponent {
 
 		return (
 			<div className={`${ owner }-${ repo }`}>
-				<img src={avatar} alt='avatar' />
+				<img src={avatar} alt='avatar' style={styles} />
 				{' '}
 				<a href={link} target='_blank'>{`${ owner }/${ repo } - ${ stars } stars`}</a>
 				<p>{desc}</p>
