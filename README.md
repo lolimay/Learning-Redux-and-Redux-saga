@@ -1,27 +1,16 @@
-# redux-saga-beginner-tutorial
-Companion Repo for [Redux/Redux-saga beginner tutorial](https://github.com/redux-saga/redux-saga/blob/master/docs/introduction/BeginnerTutorial.md)
+# GitHub Trending List
+This repository is the practice for the `redux`, `react-redux` and `redux-saga`.
 
-# Instructions
+## Preview
 
-Setup
+![](./docs/images/demo.gif)
 
-```
-// clone the repo
-git clone https://github.com/redux-saga/redux-saga-beginner-tutorial.git
+## Setup
 
-cd redux-saga-beginner-tutorial
-
-npm install
-```
-
-Run the demo
-
-```
+1. Clone this repo
+2. Install dependencies and run it:
+````
+yarn
 npm start
-```
+````
 
-Run tests
-
-```
-npm test
-```
