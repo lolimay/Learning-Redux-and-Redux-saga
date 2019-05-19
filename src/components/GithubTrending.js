@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import * as githubTrendingActions from '../actions/githubTrending';
 
 import GitHubCell from './GitHubCell';
+import Spinner from './Spinner';
 
 @connect(state => ({
-	globalState: state,
-	trendingList: state.githubTrending.trendingList
+	trendingList: state.githubTrending.trendingList,
+	isFetching: state.githubTrending.isFetching
 }), dispatch => ({
 	refresh: () => dispatch(githubTrendingActions.githubTrendingRequest())
 }))
@@ -16,7 +17,8 @@ import GitHubCell from './GitHubCell';
 export default class GitHubTrending extends React.Component {
 	static propTypes = {
 		trendingList: PropTypes.array,
-		refresh: PropTypes.func
+		refresh: PropTypes.func,
+		isFetching: PropTypes.bool
 	}
 
 	createTable = (trendingList) => {
@@ -45,7 +47,7 @@ export default class GitHubTrending extends React.Component {
 	}
 
 	render() {
-		const { trendingList, refresh } = this.props;
+		const { trendingList, refresh, isFetching } = this.props;
 
 		return (
 			<div className='github-trending'>
@@ -53,6 +55,7 @@ export default class GitHubTrending extends React.Component {
 				<button type='button' onClick={refresh}>
 					Refresh
 				</button>
+				{!isFetching ? null : <Spinner />}
 				{this.createTable(trendingList)}
 			</div>
 		);

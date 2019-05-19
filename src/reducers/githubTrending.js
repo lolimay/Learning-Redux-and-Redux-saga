@@ -12,7 +12,7 @@ export default function message(state = initialState, action) {
 		case types.GITHUB_TRENDING.REQUEST:
 			return {
 				...state,
-				isFetching: true,
+			isFetching: true,
 				failure: false,
 				errorMessage: {}
 			};
