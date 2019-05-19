@@ -4,7 +4,8 @@ const BASEURL = '/api/fetchTrendingList';
 
 export async function fetchTrendingList() {
 	try {
-		return await axios.get(BASEURL);
+		const { data } = await axios.get(BASEURL)
+		return data;
 	} catch (err) {
 		return err;
 	}
